@@ -1,6 +1,8 @@
 import pytest
 from playwright.sync_api import Playwright, Page
 
+import json
+
 from typing import Generator
 
 def pytest_addoption(parser: pytest.Parser) -> None:
@@ -52,3 +54,14 @@ def setup_browser_instance(playwright: Playwright,
 
         if browser is not None:
             browser.close()
+
+@pytest.fixture
+def get_login_credentials() -> dict:
+    """
+    This fixture gets test credentials and returns them as a dictionary.
+    """
+
+    with open("credentials/login.json", "r") as credentials_file:
+        credentials = json.load(credentials_file)
+
+    return credentials

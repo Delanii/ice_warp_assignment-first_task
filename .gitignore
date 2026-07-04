@@ -1,3 +1,7 @@
 # Ignore artifacts and temporary files
 
 **/__pycache__
+
+# Prevent sharing credentials
+
+/credentials
