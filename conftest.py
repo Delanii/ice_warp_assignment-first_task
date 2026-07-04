@@ -5,6 +5,7 @@ from typing import Generator
 
 def pytest_addoption(parser: pytest.Parser) -> None:
     """
+    Adds the pytest CLI option to run the test suite with the specified browser. The default browser is Chromium, but you can also select Firefox by using the `--browsername` option when running the tests.
     """
 
     parser.addoption(
