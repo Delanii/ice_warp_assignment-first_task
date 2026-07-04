@@ -1,0 +1,3 @@
+# Ignore artifacts and temporary files
+
+**/__pycache__
