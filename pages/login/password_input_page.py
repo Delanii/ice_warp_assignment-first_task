@@ -1,5 +1,7 @@
 from playwright.sync_api import Page
 
+from pages.app.dashboard_page import DashboardPage
+
 class PasswordInputPage:
     """
     This class represents the password input page of the IceWarp mail client.

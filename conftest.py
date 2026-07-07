@@ -33,7 +33,7 @@ def setup_browser_instance(playwright: Playwright,
             case "chromium":
                 browser = playwright.chromium.launch(
                     headless = False,
-                    slow_mo = 2000
+                    slow_mo = 2_000
                 )
 
             case "firefox":
@@ -42,7 +42,12 @@ def setup_browser_instance(playwright: Playwright,
             case _:
                 raise Exception("Unknown browser specified. Launch test with the chromium, firefox, or both browsers.")
 
-        context = browser.new_context()  # type: ignore
+        context = browser.new_context(
+            viewport = {
+                    "width": 1_640,
+                    "height": 940
+                },
+        )  # type: ignore
         page = context.new_page()
 
         yield page
