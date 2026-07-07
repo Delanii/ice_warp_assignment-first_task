@@ -11,4 +11,7 @@ def test_create_document(setup_browser_instance: Page,
 
     login_page.navigate_to_login_page(get_login_credentials["host"])
     login_page.fill_user_name(get_login_credentials["username"])
-    login_page.click_continue_button()
+
+    password_input_page = login_page.click_continue_button()
+    password_input_page.fill_password(get_login_credentials["password"])
+    password_input_page.click_sign_in_button()

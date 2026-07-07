@@ -16,7 +16,7 @@ def pytest_addoption(parser: pytest.Parser) -> None:
 
 @pytest.fixture
 def setup_browser_instance(playwright: Playwright,
-                           request: pytest.FixtureRequest) -> Generator[Page]:
+                           request: pytest.FixtureRequest) -> Generator[Page, None, None]:
     """
     This fixture generates a browser instance, context, and the initial `Page` object for each test and each browser selected with the `--browsername` option. 
     """
@@ -31,7 +31,10 @@ def setup_browser_instance(playwright: Playwright,
         match browsername:
 
             case "chromium":
-                browser = playwright.chromium.launch()
+                browser = playwright.chromium.launch(
+                    headless = False,
+                    slow_mo = 2000
+                )
 
             case "firefox":
                 browser = playwright.firefox.launch()

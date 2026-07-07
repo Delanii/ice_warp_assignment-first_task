@@ -1,5 +1,7 @@
 from playwright.sync_api import Page
 
+from pages.login.password_input_page import PasswordInputPage
+
 class SignInPage:
     """
     This class represents the sign-in page of the IceWarp mail client.
@@ -25,9 +27,11 @@ class SignInPage:
 
         self.username_input.fill(username)
 
-    def click_continue_button(self) -> None:
+    def click_continue_button(self) -> PasswordInputPage:
         """
         Clicks the continue button.
         """
 
         self.continue_button.click()
+
+        return PasswordInputPage(self.page)

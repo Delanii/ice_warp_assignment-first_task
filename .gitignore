@@ -1,7 +1,8 @@
 # Ignore artifacts and temporary files
 
-**/__pycache__
+**/__pycache__/
+.venv/
 
 # Prevent sharing credentials
 
-/credentials
+credentials/
