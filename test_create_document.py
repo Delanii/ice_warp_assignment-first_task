@@ -8,11 +8,8 @@ def test_create_document(setup_browser_instance: Page,
     """
     """
 
-    app_header = AppHeaderFragment(setup_browser_instance, get_login_credentials["username"])
-
     dashboard_page = login_platform(setup_browser_instance,
-                                    get_login_credentials,
-                                    app_header)
+                                    get_login_credentials)
 
     dashboard_page.center_area.click(button = "right")
     

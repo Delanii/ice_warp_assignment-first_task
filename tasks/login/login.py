@@ -1,12 +1,9 @@
 from playwright.sync_api import Page
 
-from fragments.app.app_header import AppHeaderFragment
-
 from pages.login.sign_in_page import SignInPage
 from pages.app.dashboard_page import DashboardPage
 
-def login_platform(page: Page, get_login_credentials: dict,
-                   app_header: AppHeaderFragment) -> DashboardPage:
+def login_platform(page: Page, get_login_credentials: dict) -> DashboardPage:
     """
     Logs in to the IceWarp browser app using the provided credentials.
     """
@@ -20,4 +17,4 @@ def login_platform(page: Page, get_login_credentials: dict,
     password_input_page.fill_password(get_login_credentials["password"])
     password_input_page.click_sign_in_button()
 
-    return DashboardPage(page, app_header)
+    return DashboardPage(page, get_login_credentials["username"])
