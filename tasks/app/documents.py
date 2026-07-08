@@ -1,6 +1,7 @@
 from playwright.sync_api import Page, Locator
 
 from forms.edit_document import EditDocumentForm
+from fragments.app.document_context_menu import DocumentContextMenuFragment
 from fragments.app.right_click_menu import RightClickMenuFragment
 
 from pages.app.dashboard_page import DashboardPage
@@ -18,7 +19,6 @@ def create_document(page: Page,
     create_document_form.click_ok_button()
 
     return EditDocumentForm(page)
-
 
 def verify_document_exists(dashboard_page: DashboardPage,
                         document_name: str) -> bool:
@@ -39,3 +39,12 @@ def find_document(dashboard_page: DashboardPage,
     """
 
     return dashboard_page.center_area.get_by_text(document_name)
+
+def delete_document(document_context_menu: DocumentContextMenuFragment) -> None:
+    """
+    Deletes a document.
+    """
+
+    confirm_dialog = document_context_menu.click_delete()
+
+    confirm_dialog.confirm_delete()

@@ -1,7 +1,8 @@
 from playwright.sync_api import Page, expect
 
+from fragments.app.document_context_menu import DocumentContextMenuFragment
 from tasks.login.login import login_platform
-from tasks.app.documents import create_document, verify_document_exists, find_document
+from tasks.app.documents import create_document, verify_document_exists, find_document, delete_document
 
 from utils.utils import create_unique_string
 
@@ -24,8 +25,5 @@ def test_manage_documents(setup_browser_instance: Page,
     document_locator = find_document(dashboard_page, document_name)
 
     document_locator.click(button = "right")
-    document_context_menu = dashboard_page.page.locator("//ul[@role = 'menu']")
-    document_context_menu.locator("//li[@role = 'menuitem' and @data-key = 'DELETE']").click()
-
-    confirm_dialog = dashboard_page.page.locator("dialog[open]")
-    confirm_dialog.locator("footer button").first.click()
+    document_context_menu = DocumentContextMenuFragment(dashboard_page.page)
+    delete_document(document_context_menu)
