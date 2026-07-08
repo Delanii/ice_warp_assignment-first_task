@@ -1,5 +1,7 @@
 from playwright.sync_api import Page
 
+import os
+
 from pages.login.sign_in_page import SignInPage
 from pages.app.dashboard_page import DashboardPage
 
@@ -10,7 +12,7 @@ def login_platform(page: Page, get_login_credentials: dict) -> DashboardPage:
 
     login_page = SignInPage(page)
 
-    login_page.navigate_to_login_page(get_login_credentials["host"])
+    login_page.navigate_to_login_page(os.environ["WEBSITE_URL"])
     login_page.fill_user_name(get_login_credentials["username"])
 
     password_input_page = login_page.click_continue_button()
