@@ -27,3 +27,5 @@ def test_manage_documents(setup_browser_instance: Page,
     document_locator.click(button = "right")
     document_context_menu = DocumentContextMenuFragment(dashboard_page.page)
     delete_document(document_context_menu)
+
+    assert verify_document_exists(dashboard_page, document_name) is False

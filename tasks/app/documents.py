@@ -26,11 +26,7 @@ def verify_document_exists(dashboard_page: DashboardPage,
     Verifies if a document with the specified name exists in the dashboard.
     """
 
-    try:
-        dashboard_page.center_area.get_by_text(document_name).wait_for(state = "visible", timeout = 2_000)
-        return True
-    except TimeoutError:
-        return False
+    return dashboard_page.center_area.get_by_text(document_name).is_visible(timeout = 2_000)
 
 def find_document(dashboard_page: DashboardPage,
                   document_name: str) -> Locator:
