@@ -14,5 +14,6 @@ def test_manage_documents(setup_browser_instance: Page,
                                     get_login_credentials)
 
     dashboard_page.center_area.click(button = "right")
-    create_document(dashboard_page.page,
+    edit_document_form = create_document(dashboard_page.page,
                     "automat_" + create_unique_string())
+    edit_document_form.close_edit_document_form()

@@ -7,8 +7,8 @@ class CreateDocumentForm:
 
     def __init__(self, page: Page):
         self.page = page
-        self.form_locator = page.locator("//div[@id = 'gui.gw']")
 
+        self.form_locator = page.locator("//div[@id = 'gui.gw']")
         self.form_locator.wait_for(state = "visible", timeout = 1_000)
 
         self.name_input_locator = self.form_locator.locator("//input[@class = 'full_width name']")

@@ -19,6 +19,6 @@ class DashboardPage:
 
         try:
             self.page.locator(self.app_header.avatar_button_locator).wait_for(state = "visible", timeout = 120_000)
-            self.dashboard_menu.wait_for(state = "visible", timeout = 120_000)
+            self.center_area.wait_for(state = "visible", timeout = 120_000)
         except TimeoutError:
             raise Exception("Dashboard page did not load within the expected time.")
