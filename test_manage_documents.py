@@ -19,4 +19,4 @@ def test_manage_documents(setup_browser_instance: Page,
     edit_document_form = create_document(dashboard_page.page, document_name)
     edit_document_form.close_edit_document_form()
 
-    expect(dashboard_page.center_area.get_by_text(document_name)).to_be_visible(timeout = 2_000)
+    assert dashboard_page.verify_document_exists(document_name) == True

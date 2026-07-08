@@ -22,3 +22,14 @@ class DashboardPage:
             self.center_area.wait_for(state = "visible", timeout = 120_000)
         except TimeoutError:
             raise Exception("Dashboard page did not load within the expected time.")
+        
+    def verify_document_exists(self, document_name: str) -> bool:
+        """
+        Verifies if a document with the specified name exists in the dashboard.
+        """
+
+        try:
+            self.center_area.get_by_text(document_name).wait_for(state = "visible", timeout = 2_000)
+            return True
+        except TimeoutError:
+            return False
